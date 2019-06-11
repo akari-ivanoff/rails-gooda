@@ -10,14 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_153027) do
+ActiveRecord::Schema.define(version: 2019_06_11_091239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "invitations", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "status"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "offer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "host_id"
+    t.index ["host_id"], name: "index_invitations_on_host_id"
+    t.index ["offer_id"], name: "index_invitations_on_offer_id"
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "talent_id"
+    t.bigint "volunteer_id"
+    t.index ["talent_id"], name: "index_offers_on_talent_id"
+    t.index ["volunteer_id"], name: "index_offers_on_volunteer_id"
+  end
+
+  create_table "talents", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "location"
+    t.text "bio"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -27,4 +61,6 @@ ActiveRecord::Schema.define(version: 2019_06_10_153027) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "invitations", "offers", column: "host_id"
+  add_foreign_key "offers", "users", column: "volunteer_id"
 end
