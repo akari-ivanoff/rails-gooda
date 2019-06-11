@@ -1,11 +1,14 @@
 class InvitationsController < ApplicationController
-  before_action :find_invitation, only: [:edit, :update, :destroy]
+  before_action :find_invitation, only: [:show, :edit, :update, :destroy]
   before_action :find_host_and_offer, only: [:create, :update]
 
-  def index
+  def index # do we need this one?
     @host = User.find(params[:user_id])
     @offer = Offer.find(params[:offer_id])
     @invitations = Invitation.all
+  end
+
+  def show
   end
 
   def new
@@ -26,7 +29,7 @@ class InvitationsController < ApplicationController
   def edit
   end
 
-  def update
+  def update # do we need this one?
     @invitation.host = @host
     @invitation.offer = @offer
     if @invitation.update(invitation_params)
@@ -36,7 +39,7 @@ class InvitationsController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy # do we need this one?
     @host = @invitation.host
     @invitation.destroy
     redirect_to user_path(@host)
