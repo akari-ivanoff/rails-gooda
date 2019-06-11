@@ -1,0 +1,14 @@
+<h1>DASHBOARD</h1>
+<h1><%= current_user.first_name %> <%= current_user.last_name %> </h1>
+
+<h2>my invitations as volunteer</h2>
+<p><% @invitations_as_volunteer.each do |invitation| %></p>
+<p><%= invitation.offer.talent.title %> - <%= invitation.offer.comment %></p>
+<p><% end %></p>
+
+
+<h2>my invitations as host</h2>
+
+<p><% @invitations_as_host.each do |invitation| %></p>
+<p><%= invitation.status %> - <%= invitation.offer.talent.title %> - <%= invitation.offer.comment %></p>
+<p><% end %></p>
