@@ -1,0 +1,6 @@
+<h1>Invitations#show</h1>
+<h1><%= @invitation.title %></h1>
+<h2>status: <%= @invitation.status %></h2>
+<h3><%= @invitation.description %></h3>
+<p>Volunteer: <%= @invitation.offer.volunteer.first_name%> <%= @invitation.offer.volunteer.last_name%></p>
+<p>from <%= @invitation.start_date %> to <%= @invitation.end_date %></p>

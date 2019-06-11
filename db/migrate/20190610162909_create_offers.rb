@@ -3,7 +3,7 @@ class CreateOffers < ActiveRecord::Migration[5.2]
     create_table :offers do |t|
       t.string :comment
       t.timestamps
-      #later on, we enter references here
+      t.references :talent
     end
   end
 end
