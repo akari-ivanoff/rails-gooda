@@ -7,11 +7,12 @@ class OffersController < ApplicationController
     @offers = Offer.all
   end
 
-  def new
-    @offer = Offer.new
+  def show
+    @invitation = @offer.invitations.build
   end
 
-  def show
+  def new
+    @offer = Offer.new
   end
 
   def create

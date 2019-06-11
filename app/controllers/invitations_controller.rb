@@ -1,10 +1,7 @@
 class InvitationsController < ApplicationController
   before_action :find_invitation, only: [:show, :edit, :update, :destroy]
-  before_action :find_host_and_offer, only: [:create, :update]
 
-  def index # do we need this one?
-    @host = User.find(params[:user_id])
-    @offer = Offer.find(params[:offer_id])
+  def index
     @invitations = Invitation.all
   end
 
@@ -12,26 +9,26 @@ class InvitationsController < ApplicationController
   end
 
   def new
+    @host = current_user
     @invitation = Invitation.new
   end
 
   def create
+    @offer = Offer.find(params.dig(:invitation, :offer_id))
     @invitation = Invitation.new(invitation_params)
-    @invitation.host = @host
-    @invitation.offer = @offer
+    @invitation.host = current_user
     if @invitation.save
       redirect_to invitation_path(@invitation)
     else
-      render :new
+      render 'offers/show'
     end
   end
 
   def edit
   end
 
-  def update # do we need this one?
-    @invitation.host = @host
-    @invitation.offer = @offer
+  def update
+    @invitation.host = current_user
     if @invitation.update(invitation_params)
       redirect_to invitation_path(@invitation)
     else
@@ -39,24 +36,19 @@ class InvitationsController < ApplicationController
     end
   end
 
-  def destroy # do we need this one?
+  def destroy
     @host = @invitation.host
     @invitation.destroy
-    redirect_to user_path(@host)
+    redirect_to offers_path
   end
 
   private
 
   def invitation_params
-    params.require(:invitation).permit(:title, :description, :status, :start_date, :end_date, :photo)
+    params.require(:invitation).permit(:title, :description, :status, :start_date, :end_date, :photo, :offer_id)
   end
 
   def find_invitation
     @invitation = Invitation.find(params[:id])
-  end
-
-  def find_host_and_offer
-    @host = User.find(params[:user_id])
-    @offer = Offer.find(params[:offer_id])
   end
 end

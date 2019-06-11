@@ -4,3 +4,10 @@
 <h3><%= @invitation.description %></h3>
 <p>Volunteer: <%= @invitation.offer.volunteer.first_name%> <%= @invitation.offer.volunteer.last_name%></p>
 <p>from <%= @invitation.start_date %> to <%= @invitation.end_date %></p>
+<%= link_to "Edit the invitation", edit_invitation_path %>
+ <br>
+<%= link_to "Delete the invitation", invitation_path(@invitation),
+        method: :delete,
+        data: { confirm: "Are you sure?" } %>
+<hr>
+<%= link_to "Back to the invitations list", invitations_path %>
