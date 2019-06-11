@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 meg = User.create(first_name: 'Meg',
                 last_name: 'Griffin',
                 location: 'Malmö',
@@ -36,12 +37,15 @@ peter = User.create(first_name: 'Peter',
 
 
 talents = ['Cooking & Baking', 'Gardening & Plants', 'Pet sitting', 'Teach & learn', 'Repairs around the house', 'Parenting and Caretaking']
-# ['Carpentry & Construction', 'Cleaning', 'Decoration', 'Deep Clean', 'Delivery', 'Electrician', 'Errands', 'Event Staffing', 'Executive Assistant', 'Furniture Assembly','IKEA Assembly', 'Laundry and Ironing', 'Lift & Shift Furniture', 'Minor Home Repairs', 'Mounting', 'Moving Help', 'Office Administration', 'Organization', 'Packing & Unpacking', 'Painting', 'Pet Sitting', 'Plumbing', 'Sewing', 'Shopping', 'Waiting in Line', 'Window Cleaning', 'Removal']
+
+# talents = ['Carpentry & Construction', 'Cleaning', 'Decoration', 'Deep Clean', 'Delivery', 'Electrician', 'Errands', 'Event Staffing', 'Executive Assistant', 'Furniture Assembly','IKEA Assembly', 'Laundry and Ironing', 'Lift & Shift Furniture', 'Minor Home Repairs', 'Mounting', 'Moving Help', 'Office Administration', 'Organization', 'Packing & Unpacking', 'Painting', 'Pet Sitting', 'Plumbing', 'Sewing', 'Shopping', 'Waiting in Line', 'Window Cleaning', 'Removal']
 talentobjects =[]
+
 talents.each do |talent|
   talentobjects << Talent.create(title: talent)
 end
 puts talentobjects[0].title
+
 homerfirstoffer = Offer.create(volunteer: homer, comment: "Lorem ispum Lorem ispum Lorem", talent: talentobjects[0])
 homersecondoffer = Offer.create(volunteer: homer, comment: "Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum", talent: talentobjects[1])
 homerthirdoffer = Offer.create(volunteer: homer, comment: "Lorem ispum Lorem ispum ", talent: talentobjects[2])
@@ -63,3 +67,4 @@ Invitation.create(title: 'mow cat', description: 'not that difficult', host: hom
 Invitation.create(title: 'wait for cat', description: 'be patient', host: homer, offer: margesecondoffer)
 Invitation.create(title: '', description: '', host: homer, offer: margethirdoffer)
 Invitation.create(title: '', description: '', host: peter, offer: margefourthoffer)
+
