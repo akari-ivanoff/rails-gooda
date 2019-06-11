@@ -20,12 +20,12 @@ peter = User.create(first_name: 'Peter',
                 bio: "is not very competent")
 
 talents = ['Cooking & Baking', 'Gardening & Plants', 'Pet sitting', 'Teach & learn', 'Repairs around the house', 'Parenting and Caretaking']
-# ['Carpentry & Construction', 'Cleaning', 'Decoration', 'Deep Clean', 'Delivery', 'Electrician', 'Errands', 'Event Staffing', 'Executive Assistant', 'Furniture Assembly','IKEA Assembly', 'Laundry and Ironing', 'Lift & Shift Furniture', 'Minor Home Repairs', 'Mounting', 'Moving Help', 'Office Administration', 'Organization', 'Packing & Unpacking', 'Painting', 'Pet Sitting', 'Plumbing', 'Sewing', 'Shopping', 'Waiting in Line', 'Window Cleaning', 'Removal']
+# talents = ['Carpentry & Construction', 'Cleaning', 'Decoration', 'Deep Clean', 'Delivery', 'Electrician', 'Errands', 'Event Staffing', 'Executive Assistant', 'Furniture Assembly','IKEA Assembly', 'Laundry and Ironing', 'Lift & Shift Furniture', 'Minor Home Repairs', 'Mounting', 'Moving Help', 'Office Administration', 'Organization', 'Packing & Unpacking', 'Painting', 'Pet Sitting', 'Plumbing', 'Sewing', 'Shopping', 'Waiting in Line', 'Window Cleaning', 'Removal']
 talents.each do |talent|
   Talent.create(title: talent)
 end
 
-homerfirstoffer = Offer.create(volunteer: homer, talent: Talent.last)
-homersecondoffer = Offer.create(volunteer: homer, talent: Talent.first)
-Invitation.create(title:'mow lawn', description:'my lawn is full of long grass, i would like it to be shorter', host: peter, offer: homerfirstoffer)
-Invitation.create(title: 'paint cat', description: 'my cat is too white', host: peter, offer: homersecondoffer)
+homer_firstoffer = Offer.create(volunteer: homer, talent: Talent.last)
+homer_secondoffer = Offer.create(volunteer: homer, talent: Talent.first)
+Invitation.create(title:'mow lawn', description:'my lawn is full of long grass, i would like it to be shorter', host: peter, offer: homer_firstoffer)
+Invitation.create(title: 'paint cat', description: 'my cat is too white', host: peter, offer: homer_secondoffer)

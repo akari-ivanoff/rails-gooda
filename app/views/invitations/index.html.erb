@@ -1,4 +1,7 @@
-<h1>Invitations#index</h1>
-<p>Find me in app/views/invitations/index.html.erb</p>
-
-<h2>no need for this one</h2>
+<h1>Invitations</h1>
+<ul>
+  <% @invitations.each do |invitation| %>
+  <li><%= link_to invitation.title, invitation_path(invitation) %></li>
+  <% end %>
+</ul>
+<hr>

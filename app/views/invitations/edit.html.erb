@@ -1,2 +1,10 @@
-<h1>Invitations#edit</h1>
-<p>Find me in app/views/invitations/edit.html.erb</p>
+<h1>Edit invitation</h1>
+<%= simple_form_for [@invitation] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.button :submit, class: "btn btn-primary w-100" %>
+<% end %>
+<hr>
+<%= link_to "Back to the invitations list", invitations_path %>

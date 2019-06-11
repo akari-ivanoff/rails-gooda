@@ -6,8 +6,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :offers
-  resources :invitations, only: [:create, :show] # we won't need a show page since we will show the results in the dashboard
-
-  #create dashboard controller with index
-
+  resources :invitations
+  # create dashboard controller with index
 end
