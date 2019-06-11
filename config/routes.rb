@@ -5,9 +5,7 @@ Rails.application.routes.draw do
   # rails generate controller bookings index show new edit
   devise_for :users
   root to: 'pages#home'
-  resources :users, except: [:destroy] do
-    resources :offers, only: [:new, :create, :edit, :update]
-  end
+  resources :offers, only: [:new, :create, :edit, :update]
   resources :offers, only: [:index, :destroy]
 
 end
