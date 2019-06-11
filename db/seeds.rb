@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
 meg = User.create(first_name: 'Meg',
                 last_name: 'Griffin',
                 location: 'Malmö',
@@ -46,23 +45,21 @@ talents.each do |talent|
   talentobjects << Talent.create(title: talent)
 end
 puts talentobjects[0].title
-homerfirstoffer = Offer.create(volunteer: homer, talent: talentobjects[0])
-homersecondoffer = Offer.create(volunteer: homer, talent: talentobjects[1])
-homerthirdoffer = Offer.create(volunteer: homer, talent: talentobjects[2])
 
-megfirstoffer = Offer.create(volunteer: meg, talent: talentobjects[0])
-megsecondoffer = Offer.create(volunteer: meg, talent: talentobjects[1])
-megthirdoffer = Offer.create(volunteer: meg, talent: talentobjects[2])
+homerfirstoffer = Offer.create(volunteer: homer, comment: "Lorem ispum Lorem ispum Lorem", talent: talentobjects[0])
+homersecondoffer = Offer.create(volunteer: homer, comment: "Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum", talent: talentobjects[1])
+homerthirdoffer = Offer.create(volunteer: homer, comment: "Lorem ispum Lorem ispum ", talent: talentobjects[2])
 
-
-margefirstoffer = Offer.create(volunteer: marge, talent: talentobjects[0])
-margesecondoffer = Offer.create(volunteer: marge, talent: talentobjects[1])
-margethirdoffer = Offer.create(volunteer: marge, talent: talentobjects[2])
-margefourthoffer = Offer.create(volunteer: marge, talent: talentobjects[3])
+megfirstoffer = Offer.create(volunteer: meg, comment: "Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum", talent: talentobjects[0])
+megsecondoffer = Offer.create(volunteer: meg, comment: "Lorem ispum Lorem ispum Lorem ispum ispum", talent: talentobjects[1])
+megthirdoffer = Offer.create(volunteer: meg, comment: "Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum", talent: talentobjects[2])
 
 
-homer_firstoffer = Offer.create(volunteer: homer, talent: Talent.last)
-homer_secondoffer = Offer.create(volunteer: homer, talent: Talent.first)
+margefirstoffer = Offer.create(volunteer: marge, comment: "Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum", talent: talentobjects[0])
+margesecondoffer = Offer.create(volunteer: marge, comment: "Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum", talent: talentobjects[1])
+margethirdoffer = Offer.create(volunteer: marge, comment: "Lorem ispum Lorem ispum ", talent: talentobjects[2])
+margefourthoffer = Offer.create(volunteer: marge, comment: "Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum", talent: talentobjects[3])
+
 Invitation.create(title:'mow lawn', description:'my lawn is full of long grass, i would like it to be shorter', host: peter, offer: homerfirstoffer)
 Invitation.create(title: 'paint cat', description: 'my cat is too white', host: peter, offer: homersecondoffer)
 Invitation.create(title: 'paint lawn', description: 'you know', host: peter, offer: megfirstoffer)
