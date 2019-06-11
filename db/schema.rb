@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2019_06_11_091239) do
   create_table "invitations", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "status"
+    t.string "status", default: "pending"
     t.date "start_date"
     t.date "end_date"
     t.bigint "offer_id"
