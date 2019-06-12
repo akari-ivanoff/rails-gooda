@@ -12,4 +12,5 @@ class User < ApplicationRecord
   # statement.
   has_many :offers, foreign_key: :volunteer_id
   has_many :talents, through: :offers
+  has_many :invitations, foreign_key: :host_id
 end

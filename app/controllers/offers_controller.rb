@@ -4,7 +4,8 @@ class OffersController < ApplicationController
   before_action :find_talent, only: [:create, :update]
 
   def index
-    @offers = Offer.all
+    query = params[:query]
+    @offers = query.present? ? Offer.global_search(query) : Offer.all
   end
 
   def show
