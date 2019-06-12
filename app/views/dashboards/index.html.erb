@@ -2,43 +2,45 @@
 <br>
 <br>
 <div class="container">
-  <h2>Welcome to your dashboard <%= current_user.first_name %></h2>
+  <h2>Welcome to your dashboard, <%= current_user.first_name %></h2>
   <hr>
   <div>
     <h3>Offer your help</h3>
     <p><strong>All invitations by hosts asking for help: </strong></p>
 
-    <p><% @invitations_as_volunteer.each do |invitation| %></p>
+    <% @invitations_as_volunteer.each do |invitation| %>
     <div class="card-product">
-     <%= image_tag "avatar.jpg", alt: "host avatar", class:"volunteer_avatar" %>
-     <div class="card-product-infos">
-      <p><strong><%= invitation.host.first_name %></strong></p>
-      <p> <%= invitation.offer.talent.title %> </p>
-      <p> <%= invitation.offer.comment %> </p>
+      <%= image_tag invitation.host.photo, alt: "host avatar", class:"volunteer_avatar" %>
+      <div class="card-product-infos">
+        <p><strong><%= invitation.host.first_name %></strong></p>
+        <p> <%= invitation.offer.talent.title %> </p>
+        <p> <%= invitation.offer.comment %> </p>
+      </div>
+      <div class="invitation-status">
+        <%= invitation.status %>
+      </div>
     </div>
-    <div class="invitation-status">
-      <%= invitation.status %>
-    </div>
-      <% end %>
+    <% end %>
   </div>
 
-<div>
-  <h3>Get help</h3>
-  <p><strong>All invitations you sent out and ask others for help: </strong></p>
+  <div>
+    <h3>Get help</h3>
+    <p><strong>All invitations you sent out and ask others for help: </strong></p>
 
-  <% @invitations_as_host.each do |invitation| %>
-  <div class="card-product">
-    <%= image_tag "avatar.jpg", alt: "volunteer avatar", class:"volunteer_avatar" %>
-    <div class="card-product-infos">
-      <p><strong><%= invitation.offer.volunteer.first_name %></strong></p>
-      <p> <%= invitation.offer.talent.title %> </p>
-      <p> <%= invitation.offer.comment %> </p>
+    <% @invitations_as_host.each do |invitation| %>
+    <div class="card-product">
+      <%= image_tag invitation.offer.volunteer.photo, alt: "volunteer avatar", class:"volunteer_avatar" %>
+      <div class="card-product-infos">
+        <p><strong><%= invitation.offer.volunteer.first_name %></strong></p>
+        <p> <%= invitation.offer.talent.title %> </p>
+        <p> <%= invitation.offer.comment %> </p>
+      </div>
+      <div class="invitation-status">
+        <%= invitation.status %>
+      </div>
     </div>
-    <div class="invitation-status">
-      <%= invitation.status %>
-    </div>
+
+    <% end %>
   </div>
 
-  <% end %>
-</div>
 </div>
