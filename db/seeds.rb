@@ -39,10 +39,8 @@ peter = User.create(first_name: 'Peter',
 Talent.destroy_all
 
 talents = ['Cooking & Baking', 'Gardening & Plants', 'Pet sitting', 'Teach & learn', 'Repairs around the house', 'Parenting and Caretaking']
-
-# talents = ['Carpentry & Construction', 'Cleaning', 'Decoration', 'Deep Clean', 'Delivery', 'Electrician', 'Errands', 'Event Staffing', 'Executive Assistant', 'Furniture Assembly','IKEA Assembly', 'Laundry and Ironing', 'Lift & Shift Furniture', 'Minor Home Repairs', 'Mounting', 'Moving Help', 'Office Administration', 'Organization', 'Packing & Unpacking', 'Painting', 'Pet Sitting', 'Plumbing', 'Sewing', 'Shopping', 'Waiting in Line', 'Window Cleaning', 'Removal']
+# ['Carpentry & Construction', 'Cleaning', 'Decoration', 'Deep Clean', 'Delivery', 'Electrician', 'Errands', 'Event Staffing', 'Executive Assistant', 'Furniture Assembly','IKEA Assembly', 'Laundry and Ironing', 'Lift & Shift Furniture', 'Minor Home Repairs', 'Mounting', 'Moving Help', 'Office Administration', 'Organization', 'Packing & Unpacking', 'Painting', 'Pet Sitting', 'Plumbing', 'Sewing', 'Shopping', 'Waiting in Line', 'Window Cleaning', 'Removal']
 talentobjects =[]
-
 talents.each do |talent|
   talentobjects << Talent.create(title: talent)
 end
@@ -73,4 +71,3 @@ Invitation.create(title: 'mow cat', description: 'not that difficult', host: hom
 Invitation.create(title: 'wait for cat', description: 'be patient', host: homer, offer: margesecondoffer)
 Invitation.create(title: '', description: '', host: homer, offer: margethirdoffer)
 Invitation.create(title: '', description: '', host: peter, offer: margefourthoffer)
-
