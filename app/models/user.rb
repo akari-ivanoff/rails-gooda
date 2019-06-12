@@ -11,4 +11,5 @@ class User < ApplicationRecord
   # otherwise the User model won't know what column to join on in the SQL
   # statement.
   has_many :offers, foreign_key: :volunteer_id
+  has_many :invitations, foreign_key: :host_id
 end

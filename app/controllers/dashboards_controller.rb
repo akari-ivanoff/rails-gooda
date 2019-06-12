@@ -1,8 +1,6 @@
 class DashboardsController < ApplicationController
   def index
-    @invitations_as_host = Invitation.all.select do |invitation|
-      invitation.host.id == current_user.id
-    end
+    @invitations_as_host = Invitation.where(host: current_user)
 
     @invitations_as_volunteer = Invitation.all.select do |invitation|
       invitation.offer.volunteer.id == current_user.id
