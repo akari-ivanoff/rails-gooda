@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.destroy_all
-Talent.destroy_all
-Offer.destroy_all
-Invitation.destroy_all
+User.delete_all
+Talent.delete_all
+Offer.delete_all
+Invitation.delete_all
 
 puts 'Creating users...'
 
@@ -63,27 +63,33 @@ puts 'Creating talents...'
 talents_attributes = [
   {
     title: 'Cooking & Baking',
-    photo: 'cooking-baking.jpg'
+    photo: 'cooking-baking.jpg',
+    slug: "cooking"
   },
   {
     title: 'Gardening & Plants',
-    photo: 'gardening.jpg'
+    photo: 'gardening.jpg',
+    slug: "gardening"
   },
   {
     title: 'Pet sitting',
-    photo: 'pets.jpg'
+    photo: 'pets.jpg',
+    slug: "pets"
   },
   {
     title: 'Teach & learn',
-    photo: 'teaching.jpg'
+    photo: 'teaching.jpg',
+    slug: "teaching"
   },
   {
     title: 'Repairs around the house',
-    photo: 'repairs.jpg'
+    photo: 'repairs.jpg',
+    slug: "repairs"
   },
   {
     title: 'Parenting and Caretaking',
-    photo: 'kids.jpg'
+    photo: 'kids.jpg',
+    slug: "kids"
   }
 ]
 
