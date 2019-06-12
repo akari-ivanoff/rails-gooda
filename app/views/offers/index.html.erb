@@ -3,9 +3,9 @@
 <br>
 <div class="container">
 <div id="search_bar">
-    <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+    <%= simple_form_for :search, url: offers_path, method: :get do |f| %>
     <div class="search-form-control form-group search_box">
-      <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+      <input class="form-control string required" type="text" name="query" id="search_query" />
       <button name="button" type="submit" class="btn btn-flat btn-primary homepage-button">
         <i class="fas fa-search"></i> Search
       </button>
@@ -14,7 +14,7 @@
   </div>
 <br>
 <br>
-  <h2>Poeple near you, who can help in "Search"  </h2>
+  <h2>People near you, who can help out:  </h2>
   <hr>
   <div class="flex-container category-cards">
     <% @offers.each do |offer| %>
