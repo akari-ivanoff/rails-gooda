@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+#User.destroy_all
+
 meg = User.create(first_name: 'Meg',
                 last_name: 'Griffin',
                 location: 'Malmö',
@@ -34,7 +36,7 @@ peter = User.create(first_name: 'Peter',
                 password: '111111',
                 bio: "is not very competent")
 
-
+Talent.destroy_all
 
 talents = ['Cooking & Baking', 'Gardening & Plants', 'Pet sitting', 'Teach & learn', 'Repairs around the house', 'Parenting and Caretaking']
 
@@ -45,6 +47,8 @@ talents.each do |talent|
   talentobjects << Talent.create(title: talent)
 end
 puts talentobjects[0].title
+
+Offer.destroy_all
 
 homerfirstoffer = Offer.create(volunteer: homer, comment: "Lorem ispum Lorem ispum Lorem", talent: talentobjects[0])
 homersecondoffer = Offer.create(volunteer: homer, comment: "Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum", talent: talentobjects[1])
@@ -59,6 +63,8 @@ margefirstoffer = Offer.create(volunteer: marge, comment: "Lorem ispum Lorem isp
 margesecondoffer = Offer.create(volunteer: marge, comment: "Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum", talent: talentobjects[1])
 margethirdoffer = Offer.create(volunteer: marge, comment: "Lorem ispum Lorem ispum ", talent: talentobjects[2])
 margefourthoffer = Offer.create(volunteer: marge, comment: "Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum", talent: talentobjects[3])
+
+Invitation.destroy_all
 
 Invitation.create(title:'mow lawn', description:'my lawn is full of long grass, i would like it to be shorter', host: peter, offer: homerfirstoffer)
 Invitation.create(title: 'paint cat', description: 'my cat is too white', host: peter, offer: homersecondoffer)
