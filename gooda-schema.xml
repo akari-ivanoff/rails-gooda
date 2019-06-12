@@ -41,14 +41,14 @@
     <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
     <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
   </group>
-</datatypes><table x="107" y="59" name="users">
+</datatypes><table x="100" y="51" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="name" null="1" autoincrement="0">
+<row name="first_name" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
-<row name="surname" null="1" autoincrement="0">
+<row name="last_name" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
 <row name="bio" null="1" autoincrement="0">
@@ -57,14 +57,17 @@
 <row name="area" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
-<row name="avatar" null="1" autoincrement="0">
+<row name="address" null="1" autoincrement="0">
+<datatype>CHAR</datatype>
+<default>NULL</default></row>
+<row name="photo" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="468" y="52" name="invitations">
+<table x="469" y="27" name="invitations">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -98,7 +101,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="280" y="206" name="offers">
+<table x="290" y="201" name="offers">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -117,7 +120,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="105" y="304" name="talents">
+<table x="106" y="301" name="talents">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
