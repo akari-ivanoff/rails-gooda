@@ -30,6 +30,7 @@
               </button>
             </div>
             <div class="modal-body">
+              <p class="modal-text" id="addInvitationModalLabel"> <%= offer.comment %> </p>
               <%= simple_form_for [offer.invitations.build] do |f| %>
                 <%= f.input :offer_id, as: :hidden %>
                 <%= f.input :title %>
@@ -50,20 +51,14 @@
     <div class="card card_offer">
       <%= image_tag offer.volunteer.photo, alt: "avatar", class:"card-img-top"  %>
       <div class="card-body">
-        <h4 class="card-title"> <%= offer.title %> <%= offer.volunteer.first_name %> </h4>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#offer-<%= offer.id %>">
-          Create invitation
+        <h4 class="card-title"> <%= offer.volunteer.first_name %> </h4>
+        <p class="card-text"> <%= offer.title %> </p>
+        <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#offer-<%= offer.id %>">
+          Invite
         </button>
-
-        <%= link_to offer_path(offer) do %>
-        <p class="btn btn-primary">Explore more</p>
-        <% end %>
       </div>
     </div>
     <% end %>
   </div>
   <hr>
 </div>
-
-
-
