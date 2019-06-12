@@ -10,6 +10,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :last_name
       t.string :location
       t.text :bio
+      t.string :photo, :default => "avatar.jpg"
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at

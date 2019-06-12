@@ -2,15 +2,15 @@
 <br>
 <br>
 <div class="container">
-  <h2>Poeple near you, who can help in "Search"  </h2>
+  <h2>People near you, who can help in "Search"  </h2>
   <hr>
   <div class="flex-container category-cards">
     <% @offers.each do |offer| %>
     <div class="card card_offer">
-      <%= image_tag "avatar.jpg", alt: "avatar", class:"card-img-top" %>
+      <%= image_tag offer.volunteer.photo, alt: "avatar", class:"card-img-top"  %>
       <div class="card-body">
         <h4 class="card-title"> <%= offer.volunteer.first_name %> </h4>
-        <p class="card-text"> <%= offer.comment %> </p>
+        <p class="card-text"> <%= offer.title %> </p>
         <%= link_to offer_path(offer) do %>
         <p class="btn btn-primary">Invite</p>
         <% end %>

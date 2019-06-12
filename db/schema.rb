@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_06_11_091239) do
     t.string "title"
     t.text "description"
     t.string "status", default: "pending"
+    t.string "photo"
     t.date "start_date"
     t.date "end_date"
     t.bigint "offer_id"
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_06_11_091239) do
   end
 
   create_table "offers", force: :cascade do |t|
+    t.string "title"
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -41,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_06_11_091239) do
 
   create_table "talents", force: :cascade do |t|
     t.string "title"
+    t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -52,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_06_11_091239) do
     t.string "last_name"
     t.string "location"
     t.text "bio"
+    t.string "photo", default: "avatar.jpg"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

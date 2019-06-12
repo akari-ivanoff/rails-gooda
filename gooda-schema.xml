@@ -41,7 +41,7 @@
     <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
     <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
   </group>
-</datatypes><table x="100" y="51" name="users">
+</datatypes><table x="107" y="59" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -51,23 +51,26 @@
 <row name="last_name" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
+<row name="location" null="1" autoincrement="0">
+<datatype>CHAR</datatype>
+<default>NULL</default></row>
 <row name="bio" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
-<row name="area" null="1" autoincrement="0">
-<datatype>CHAR</datatype>
-<default>NULL</default></row>
-<row name="address" null="1" autoincrement="0">
-<datatype>CHAR</datatype>
-<default>NULL</default></row>
 <row name="photo" null="1" autoincrement="0">
+<datatype>CHAR</datatype>
+<default>NULL</default></row>
+<row name="email" null="1" autoincrement="0">
+<datatype>CHAR</datatype>
+<default>NULL</default></row>
+<row name="encrypted_password" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="469" y="27" name="invitations">
+<table x="542" y="53" name="invitations">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -101,7 +104,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="290" y="201" name="offers">
+<table x="304" y="206" name="offers">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -113,6 +116,9 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="talents" row="id" />
 </row>
+<row name="title" null="1" autoincrement="0">
+<datatype>CHAR</datatype>
+<default>NULL</default></row>
 <row name="comment" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
@@ -120,14 +126,14 @@
 <part>id</part>
 </key>
 </table>
-<table x="106" y="301" name="talents">
+<table x="115" y="294" name="talents">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="title" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
-<row name="icon" null="1" autoincrement="0">
+<row name="photo" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
