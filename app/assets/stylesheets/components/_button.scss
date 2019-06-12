@@ -1,3 +1,25 @@
 .homepage-button {
+background-color: $orange;
+border-style: 1px solid;
+border-color: $red;
+color: white;
+}
 
+.homepage-button:hover {
+background-color: $red;
+border-style: 1px solid;
+border-color: $orange;
+}
+
+.invitation-btn {
+margin: 6px 20px;
+}
+
+.dashboard-tabs {
+  font-size: 20px;
+
+}
+
+.dashboard-tabs a.nav-link.active {
+background-color: $gray;
 }

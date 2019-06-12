@@ -18,7 +18,7 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.new(invitation_params)
     @invitation.host = current_user
     if @invitation.save
-      redirect_to invitation_path(@invitation)
+      redirect_to dashboards_index_path
     else
       render 'offers/show'
     end
@@ -30,7 +30,7 @@ class InvitationsController < ApplicationController
   def update
     @invitation.host = current_user
     if @invitation.update(invitation_params)
-      redirect_to invitation_path(@invitation)
+      redirect_to dashboards_index_path
     else
       render :edit
     end

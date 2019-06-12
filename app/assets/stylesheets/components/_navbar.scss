@@ -11,3 +11,14 @@
   width: 50px;
   border-radius: 50%;
 }
+
+.navbar-lewagon .navbar-brandtext {
+  font-size: 30px;
+  position: absolute;
+  top: 15px; left: 75px;
+
+  span {
+  color: $orange;
+  }
+}
+
