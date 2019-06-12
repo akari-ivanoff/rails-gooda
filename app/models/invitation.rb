@@ -1,5 +1,5 @@
 class Invitation < ApplicationRecord
-  belongs_to :host, class_name: :User, foreign_key: :host_id
+  belongs_to :host, class_name: :User
   belongs_to :offer
   validates :offer, presence: true
   validates :host, presence: true
