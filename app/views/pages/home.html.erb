@@ -5,9 +5,9 @@
     <div id="search_bar">
       <h1>Find a volunteer.</h1>
       <br>
-      <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+      <%= simple_form_for :search, url: offers_path, method: :get do |f| %>
       <div class="search-form-control form-group search_box" id="margin">
-        <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+        <input class="form-control string required" type="text" name="query" id="search_query" />
         <button name="button" type="submit" class="btn btn-flat btn-primary homepage-button">
           <i class="fas fa-search"></i> Search
         </button>
@@ -28,7 +28,7 @@
     <h2 style="padding-left: 30px"> Find help in one of our categories </h2>
     <div class="flex-container category-cards">
       <% Talent.all.each do |talent| %>
-        <%= link_to offers_path(query: talent.slug) do %>
+        <%= link_to offers_path(query: talent.title) do %>
          <div class="card-category" id="<%= talent.slug %>"> <h2> <%= talent.title%> </h2></div>
         <% end %>
       <% end %>
