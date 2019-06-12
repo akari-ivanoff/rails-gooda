@@ -5,74 +5,140 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Invitation.destroy_all
-Offer.destroy_all
-Talent.destroy_all
-User.destroy_all
 
+User.delete_all
+Talent.delete_all
+Offer.delete_all
+Invitation.delete_all
 
+puts 'Creating users...'
 
-meg = User.create(first_name: 'Meg',
-                last_name: 'Griffin',
-                location: 'Malmö',
-                email: 'marge@griffin.com',
-                password: '111111',
-                bio: "has a hat")
+users_attributes = [
+  {
+    first_name: 'Meg',
+    last_name: 'Griffin',
+    location: 'Malmö',
+    email: 'meg@griffin.com',
+    password: '111111',
+    bio: "Has a hat",
+    photo: "meg.jpg"
+  },
+  {
+    first_name: 'Marge',
+    last_name: 'Simpson',
+    location: 'Almhult',
+    email: 'marge@simpson.com',
+    password: '111111',
+    bio: "Very tidy",
+    photo: "marge.jpg"
+  },
+  {
+    first_name: 'Homer',
+    last_name: 'Simpson',
+    location: 'Almhult',
+    email: 'homer@simpson.com',
+    password: '111111',
+    bio: "Can do anything but gets sleepy quite fast",
+    photo: "homer.jpg"
+  },
+  {
+    first_name: 'Peter',
+    last_name: 'Griffin',
+    location: 'Malmö',
+    email: 'peter@griffin.com',
+    password: '111111',
+    bio: "Is not very competent",
+    photo: "peter.jpg"
+  }
+]
 
-marge = User.create(first_name: 'Marge',
-                last_name: 'Simpson',
-                location: 'Almhult',
-                email: 'marge@simpson.com',
-                password: '111111',
-                bio: "very tidy")
+User.create!(users_attributes)
+users = User.all
+puts 'Users created!'
 
-homer = User.create(first_name: 'Homer',
-                last_name: 'Simpson',
-                location: 'Almhult',
-                email: 'homer@simpson.com',
-                password: '111111',
-                bio: "can do anything but gets sleepy quite fast")
+# talents = ['Carpentry & Construction', 'Cleaning', 'Decoration', 'Deep Clean', 'Delivery', 'Electrician', 'Errands', 'Event Staffing', 'Executive Assistant', 'Furniture Assembly','IKEA Assembly', 'Laundry and Ironing', 'Lift & Shift Furniture', 'Minor Home Repairs', 'Mounting', 'Moving Help', 'Office Administration', 'Organization', 'Packing & Unpacking', 'Painting', 'Pet Sitting', 'Plumbing', 'Sewing', 'Shopping', 'Waiting in Line', 'Window Cleaning', 'Removal']
 
-peter = User.create(first_name: 'Peter',
-                last_name: 'Griffin',
-                location: 'Malmö',
-                email: 'peter@griffin.com',
-                password: '111111',
-                bio: "is not very competent")
+puts 'Creating talents...'
 
+talents_attributes = [
+  {
+    title: 'Cooking & Baking',
+    photo: 'cooking-baking.jpg',
+    slug: "cooking"
+  },
+  {
+    title: 'Gardening & Plants',
+    photo: 'gardening.jpg',
+    slug: "gardening"
+  },
+  {
+    title: 'Pet sitting',
+    photo: 'pets.jpg',
+    slug: "pets"
+  },
+  {
+    title: 'Teach & learn',
+    photo: 'teaching.jpg',
+    slug: "teaching"
+  },
+  {
+    title: 'Repairs around the house',
+    photo: 'repairs.jpg',
+    slug: "repairs"
+  },
+  {
+    title: 'Parenting and Caretaking',
+    photo: 'kids.jpg',
+    slug: "kids"
+  }
+]
 
-Talent.destroy_all
+Talent.create!(talents_attributes)
+talents = Talent.all
+puts 'Talents created!'
 
+puts 'Creating offers...'
 
-talents = ['Cooking & Baking', 'Gardening & Plants', 'Pet sitting', 'Teach & learn', 'Repairs around the house', 'Parenting and Caretaking']
-# ['Carpentry & Construction', 'Cleaning', 'Decoration', 'Deep Clean', 'Delivery', 'Electrician', 'Errands', 'Event Staffing', 'Executive Assistant', 'Furniture Assembly','IKEA Assembly', 'Laundry and Ironing', 'Lift & Shift Furniture', 'Minor Home Repairs', 'Mounting', 'Moving Help', 'Office Administration', 'Organization', 'Packing & Unpacking', 'Painting', 'Pet Sitting', 'Plumbing', 'Sewing', 'Shopping', 'Waiting in Line', 'Window Cleaning', 'Removal']
-talentobjects =[]
-talents.each do |talent|
-  talentobjects << Talent.create(title: talent)
+users.each do |user|
+  user_talents = talents.sample(Random.new.rand(3..6))
+  user_talents.each do |user_talent|
+    title = Faker::GreekPhilosophers.quote
+    comment = Faker::Hipster.sentence
+    offer_attributes = [
+      {
+        volunteer: user,
+        title: title,
+        comment: comment,
+        talent: user_talent
+      }
+    ]
+    Offer.create!(offer_attributes)
+  end
 end
-puts talentobjects[0].title
 
+offers = Offer.all
+puts 'Offers created!'
 
-homerfirstoffer = Offer.create(volunteer: homer, comment: "Lorem ispum Lorem ispum Lorem", talent: talentobjects[0])
-homersecondoffer = Offer.create(volunteer: homer, comment: "Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum", talent: talentobjects[1])
-homerthirdoffer = Offer.create(volunteer: homer, comment: "Lorem ispum Lorem ispum ", talent: talentobjects[2])
+puts 'Creating invitations...'
 
-megfirstoffer = Offer.create(volunteer: meg, comment: "Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum", talent: talentobjects[0])
-megsecondoffer = Offer.create(volunteer: meg, comment: "Lorem ispum Lorem ispum Lorem ispum ispum", talent: talentobjects[1])
-megthirdoffer = Offer.create(volunteer: meg, comment: "Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum", talent: talentobjects[2])
+offers.each do |offer|
+  Random.new.rand(0..2).times do
+    title = Faker::Quote.yoda
+    description = Faker::Hacker.say_something_smart
+    start_date = Faker::Date.between(Date.today, 1.week.from_now)
+    end_date = Faker::Date.between(1.week.from_now, 2.week.from_now)
+    invitation_attributes = [
+      {
+        title: title,
+        description: description,
+        host: users.sample,
+        offer: offer,
+        start_date: start_date,
+        end_date: end_date
+      }
+    ]
+    Invitation.create!(invitation_attributes)
+  end
+end
 
-
-margefirstoffer = Offer.create(volunteer: marge, comment: "Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum", talent: talentobjects[0])
-margesecondoffer = Offer.create(volunteer: marge, comment: "Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum", talent: talentobjects[1])
-margethirdoffer = Offer.create(volunteer: marge, comment: "Lorem ispum Lorem ispum ", talent: talentobjects[2])
-margefourthoffer = Offer.create(volunteer: marge, comment: "Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispum", talent: talentobjects[3])
-
-
-
-Invitation.create(title:'mow lawn', description:'my lawn is full of long grass, i would like it to be shorter', host: peter, offer: homerfirstoffer)
-Invitation.create(title: 'paint cat', description: 'my cat is too white', host: peter, offer: homersecondoffer)
-Invitation.create(title: 'paint lawn', description: 'you know', host: peter, offer: megfirstoffer)
-Invitation.create(title: 'mow cat', description: 'not that difficult', host: homer, offer: margefirstoffer)
-Invitation.create(title: 'wait for cat', description: 'be patient', host: homer, offer: margesecondoffer)
-Invitation.create(title: '', description: '', host: homer, offer: margethirdoffer)
-Invitation.create(title: '', description: '', host: peter, offer: margefourthoffer)
+puts 'Invitations created!'

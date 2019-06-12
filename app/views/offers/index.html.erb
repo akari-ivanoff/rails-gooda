@@ -16,6 +16,7 @@
 <br>
 <br>
   <h2>People near you, who can help out:  </h2>
+
   <hr>
   <div class="flex-container category-cards">
     <% @offers.each do |offer| %>
@@ -47,12 +48,13 @@
       </div>
 
     <div class="card card_offer">
-      <%= image_tag "avatar.jpg", alt: "avatar", class:"card-img-top" %>
+      <%= image_tag offer.volunteer.photo, alt: "avatar", class:"card-img-top"  %>
       <div class="card-body">
         <h4 class="card-title"> <%= offer.title %> <%= offer.volunteer.first_name %> </h4>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#offer-<%= offer.id %>">
           Create invitation
         </button>
+
         <%= link_to offer_path(offer) do %>
         <p class="btn btn-primary">Explore more</p>
         <% end %>

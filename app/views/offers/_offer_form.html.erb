@@ -1,5 +1,6 @@
 <%= simple_form_for [@offer] do |f| %>
   <%= f.association :talent, as: :select %>
+  <%= f.input :title %>
   <%= f.input :comment %>
   <%= f.button :submit, class: "btn btn-primary w-100" %>
 <% end %>
