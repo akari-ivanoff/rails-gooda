@@ -5,24 +5,27 @@
   
   <h1><%= @user.first_name %> <%= @user.last_name %></h1>
   <hr>
+  <%= image_tag @user.photo, alt: "user avatar", class: "avatar-large" %>
   <p>Location: <%= @user.location %></p>
   <p>Bio: <%= @user.bio %></p>
   <p>Email: <%= @user.email %></p>
-  <hr>
-  <%= link_to "Edit the user", edit_user_path(@user) %>
-  <hr>
-  <%= image_tag @user.photo, alt: "user avatar" %>
-  
-<%
-=begin %>
-  <% @user.invitations.all.each do |invitation| %>
-  <h1><%= invitation.title %></h1>
-  <h2>status: <%= invitation.status %></h2>
-  <h3><%= invitation.description %></h3>
-  <p><%= invitation.offer.volunteer.first_name%> <%= invitation.offer.volunteer.last_name%></p>
-  <p><%= invitation.start_date %> to <%= invitation.end_date %></p>
+  <% if @user == current_user %>
+    <hr>
+    <%= link_to "Edit the user", edit_user_path(@user) %>
+    <%= link_to 'Add new offer', new_offer_path %>
   <% end %>
-<%
-=end %>
+  <hr>
+
+  <% @offers.each do |offer| %>
+    <%= image_tag offer.talent.photo, alt: "talent photo", class: "avatar-large" %>
+    <h2><%= offer.talent.title %></h2>
+    <h3><%= offer.title %></h3>
+    <p><%= offer.comment %></p>
+    <% if @user == current_user %>
+      <%= link_to "Edit the offer", edit_offer_path(offer) %>
+    <% end %>
+    <hr>
+  <% end %>
+
 </div>
 
