@@ -77,6 +77,12 @@
               </div>
 
           </div>
+<%
+=begin %>
+          <% @invitations_as_volunteer.each do |pizza| %>
+            <%= render "invitation-received-card", invitation: pizza %>
+<%
+=end%>
           <% end %>
         </div>
       </div>
@@ -86,6 +92,7 @@
         <p><strong>All invitations you sent out and ask others for help: </strong></p>
 
         <% @invitations_as_host.each do |invitation| %>
+
         <div class="card-product">
           <%= image_tag invitation.offer.volunteer.photo, alt: "volunteer avatar", class:"volunteer_avatar" %>
           <div class="card-product-infos">
@@ -131,6 +138,11 @@
             </div>
           </div>
         </div>
+<%
+=begin %>
+          <%= render 'invitation-sent-card', invitation: invitation %>
+<%
+=end%>
         <% end %>
       </div>
     </div>

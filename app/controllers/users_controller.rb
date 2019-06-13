@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update]
 
   def show
-    @invitations = @user.invitations
+    @offers = @user.offers
   end
 
   def edit
@@ -23,6 +23,6 @@ class UsersController < ApplicationController
   end
 
   def find_user
-    @user = current_user
+    @user = User.find(params[:id])
   end
 end

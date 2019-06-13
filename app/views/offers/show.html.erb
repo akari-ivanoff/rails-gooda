@@ -1,22 +1,13 @@
 <br>
 <br>
 <br>
+<br>
+<br>
 
 <div class="container d-flex">
 
-  <div class="offer-details">
-
-    <h3><%= @offer.volunteer.first_name %> could help out. Invite her!</h3>
-    <br>
-    <p><%= @offer.talent.title %></p>
-    <p><%= @offer.title %></p>
-    <p><%= @offer.comment %></p>
-
-  </div>
-
-<div class="card">
-    <h5>Create invitation</h5>
-    <div class="modal-body">
+  <div class="card modal-body">
+    <h3 class="modal-body"><%= @offer.volunteer.first_name %> could help out. Invite her!</h3>
       <%= simple_form_for @invitation do |f| %>
         <%= f.input :offer_id, as: :hidden %>
         <%= f.input :title %>
@@ -25,13 +16,34 @@
         <%= f.input :end_date %>
         <%= f.button :submit, class: "btn btn-primary w-100" %>
       <% end %>
-    </div>
+  </div>
+
+  <div class="offer_details">
+     <div class="card-image" style="background-image: url('<%= image_path @offer.volunteer.photo %>')">
+      </div>
+    <br>
+    <p class="heading"> Help offer for <strong> <%= @offer.talent.title %> </strong></p>
+    <hr>
+    <p><strong><em>"<%= @offer.title %>"</em></strong></p>
+    <p><em>"<%= @offer.comment %>"</em></p>
+    <br>
+    <p class="heading"><strong>About <%= @offer.volunteer.first_name %> <%= @offer.volunteer.last_name %>: </strong></p>
+    <hr>
+    <p>Location: <strong> <%= @offer.volunteer.location%></strong></p>
+    <p ><strong>About myself description: </strong></p>
+    <p class= "card text_field"><%= @offer.volunteer.bio%></p>
+    <%= link_to user_path(@offer.volunteer) do %>
+    <i class="fab fa-wpexplorer"></i> More about <%= @offer.volunteer.first_name%>
+    <% end %>
   </div>
 
 </div>
-
+<br>
+<br>
 <div class="container">
-  <%= link_to "Back to the offers list", offers_path %>
+<%= link_to offers_path do %>
+<i class="fas fa-undo-alt"></i> List of help offers
+<% end %>
 </div>
 
 
