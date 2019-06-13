@@ -1,31 +1,60 @@
+<br>
+<br>
+<br>
+
 <div class="container">
+  <div class="d-flex align-items-center white-background" >
+    <div class="header-item">
+    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+    </div>
+    <% if @user == current_user %>
+      <div class="edit-item">
+        <%= link_to edit_user_path(@user) do %>
+          <i class="fas fa-pen"></i> Your profile
+        <% end %>
+      </div>
+      <div class="edit-item">
+        <%= link_to new_offer_path do %>
+          <i class="fas fa-plus"></i> New help offer
+        <% end %>
+      </div>
+    <% end %>
+  </div>
   <br>
+  <div class="profile_details d-flex">
+      <div class="profile_picture" style="background-image: url('<%= image_path @user.photo %>')">
+      </div>
+      <div class="profile_text">
+        <p class="heading"><strong>About myself: </strong></p>
+        <p>Location: <strong> <%= @user.location%></strong></p>
+        <p class= "card text_field"><%= @user.bio%></p>
+      </div>
+  </div>
   <br>
-  <br>
-  
-  <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-  <hr>
-  <%= image_tag @user.photo, alt: "user avatar", class: "avatar-large" %>
-  <p>Location: <%= @user.location %></p>
-  <p>Bio: <%= @user.bio %></p>
-  <p>Email: <%= @user.email %></p>
-  <% if @user == current_user %>
-    <hr>
-    <%= link_to "Edit the user", edit_user_path(@user) %>
-    <%= link_to 'Add new offer', new_offer_path %>
-  <% end %>
-  <hr>
+  <div class="white-background">
 
   <% @offers.each do |offer| %>
-    <%= image_tag offer.talent.photo, alt: "talent photo", class: "avatar-large" %>
-    <h2><%= offer.talent.title %></h2>
-    <h3><%= offer.title %></h3>
-    <p><%= offer.comment %></p>
-    <% if @user == current_user %>
-      <%= link_to "Edit the offer", edit_offer_path(offer) %>
-    <% end %>
+    <div class="d-flex align-items-center justify-content-spacebetween">
+      <div class="avatar-large">
+        <%= image_tag offer.talent.photo, alt: "talent photo" %>
+      </div>
+      <div class="body-item">
+        <h3><%= offer.talent.title %></h3>
+      </div>
+        <div class="body-item">
+        <p><strong><%= offer.title %></strong></p>
+        <p><%= offer.comment %></p>
+      </div>
+      <div class="edit-item">
+        <% if @user == current_user %>
+          <%= link_to edit_offer_path(offer) do%>
+            <i class="fas fa-pen"></i> Edit
+          <% end %>
+        <% end %>
+      </div>
+    </div>
     <hr>
   <% end %>
-
+</div>
 </div>
 
