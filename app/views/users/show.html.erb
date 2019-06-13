@@ -1,11 +1,28 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<h2>User profile will be here</h2>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  
+  <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+  <hr>
+  <p>Location: <%= @user.location %></p>
+  <p>Bio: <%= @user.bio %></p>
+  <p>Email: <%= @user.email %></p>
+  <hr>
+  <%= link_to "Edit the user", edit_user_path(@user) %>
+  <hr>
+  <%= image_tag @user.photo, alt: "user avatar" %>
+  
+<%
+=begin %>
+  <% @user.invitations.all.each do |invitation| %>
+  <h1><%= invitation.title %></h1>
+  <h2>status: <%= invitation.status %></h2>
+  <h3><%= invitation.description %></h3>
+  <p><%= invitation.offer.volunteer.first_name%> <%= invitation.offer.volunteer.last_name%></p>
+  <p><%= invitation.start_date %> to <%= invitation.end_date %></p>
+  <% end %>
+<%
+=end %>
+</div>
 
-<% @user.invitations.all.each do |invitation| %>
-<h1><%= invitation.title %></h1>
-<h2>status: <%= invitation.status %></h2>
-<h3><%= invitation.description %></h3>
-<p><%= invitation.offer.volunteer.first_name%> <%= invitation.offer.volunteer.last_name%></p>
-<p><%= invitation.start_date %> to <%= invitation.end_date %></p>
-<% end %>

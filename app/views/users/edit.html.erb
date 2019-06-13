@@ -1,3 +1,16 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
-<h2>@invitation.host</h2>
+<div class="container">
+  <br>
+  <br>
+  <br>
+
+  <h1>Edit <%= @user.first_name %>'s profile</h1>
+
+  <%= simple_form_for(@user) do |f| %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :location %>
+    <%= f.input :bio %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
+
+</div>
