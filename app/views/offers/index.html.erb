@@ -20,13 +20,44 @@
   <hr>
   <div class="flex-container category-cards">
     <% @offers.each do |offer| %>
-     <div class="card card_offer">
+        <div class="modal fade" id="offer-<%= offer.id %>" tabindex="-1" role="dialog" aria-labelledby="addInvitationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addInvitationModalLabel">Create invitation</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for [offer.invitations.build] do |f| %>
+                <%= f.input :offer_id, as: :hidden %>
+                <%= f.input :title %>
+                <%= f.input :description %>
+                <%= f.input :start_date %>
+                <%= f.input :end_date %>
+                <%= f.button :submit, class: "btn btn-primary w-100" %>
+              <% end %>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+    <div class="card card_offer">
       <%= image_tag offer.volunteer.photo, alt: "avatar", class:"card-img-top"  %>
       <div class="card-body">
-        <h4 class="card-title"> <%= offer.volunteer.first_name %> </h4>
-        <p class="card-text"> <%= offer.title %> </p>
+        <h4 class="card-title"> <%= offer.title %> <%= offer.volunteer.first_name %> </h4>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#offer-<%= offer.id %>">
+          Create invitation
+        </button>
+
         <%= link_to offer_path(offer) do %>
-        <p class="btn btn-primary w-100">Invite</p>
+        <p class="btn btn-primary">Explore more</p>
+
         <% end %>
       </div>
     </div>
@@ -35,3 +66,4 @@
   </div>
   <hr>
 </div>
+
