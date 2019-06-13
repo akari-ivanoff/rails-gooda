@@ -21,6 +21,18 @@
   text-align: center;
 }
 
+.invitation-date-location {
+  flex-basis: 20%;
+  flex-grow: 0;
+  height: 100%;
+  width: 10vw;
+  display: flex;
+  object-fit: cover;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
 .volunteer_avatar {
   flex-basis: 20%;
   flex-grow: 0;
@@ -43,7 +55,7 @@
 }
 
 .card-product .card-product-infos {
-  flex-basis: 70%;
+  flex-basis: 50%;
   flex-grow: 0;
   padding: 16px;
 }
