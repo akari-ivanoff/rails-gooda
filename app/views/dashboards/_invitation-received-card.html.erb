@@ -1,9 +1,9 @@
 <div class="card-product">
   <%= link_to user_path(invitation.host) do %>
-  <%= image_tag invitation.host.photo, alt: "host avatar", class:"volunteer_avatar" %>
+    <%= image_tag invitation.host.photo, alt: "host avatar", class:"volunteer_avatar" %>
   <% end %>
   <div class="card-product-infos">
-    <p><strong><%= invitation.host.first_name %></strong> for <strong><%= invitation.offer.talent.title %> </strong></p>
+    <p><strong><%= invitation.host.first_name %></strong> is asking your help with <strong><%= invitation.offer.talent.title %> </strong></p>
     <p>
       <% if invitation.offer.title.length < 100 %>
         <%= invitation.offer.title %>
@@ -14,10 +14,23 @@
   </div>
   <div class="invitation-date-location">
     <p><%= invitation.start_date %> - <%= invitation.end_date %> </p>
-    <p> Location </p>
+    <p><%= invitation.offer.volunteer.location %></p>
   </div>
-  <div class="invitation-status">
-    <a class="btn btn-flat btn-primary invitation-btn" href="#">Accept</a>
-    <a class="btn btn-flat btn-primary invitation-btn" href="#">Decline</a>
-  </div>
+    <div class="invitation-status">
+
+      <% if invitation.status == "pending" %>
+        <%= form_for(invitation, data: { confirm: "Are you sure you want to accept this help request?"}) do |fa| %>
+          <%= fa.hidden_field :status, :value => "accepted" %>
+          <%= fa.submit "Accept ", class: "btn btn-flat btn-primary m-2" %>
+        <% end %>
+        <%= form_for(invitation, data: { confirm: "Are you sure you want to decline this help request?" }) do |fr| %>
+          <%= fr.hidden_field :status, :value => "declined" %>
+          <%= fr.submit "Decline", class: "btn btn-flat btn-primary m-2" %>
+        <% end %>
+      <% else %>
+        <button class="btn btn-flat btn-secondary m-2" disabled><%= invitation.status.capitalize %></button>
+      <% end %>
+
+    </div>
+
 </div>

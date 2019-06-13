@@ -6,10 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.delete_all
-Talent.delete_all
-Offer.delete_all
-Invitation.delete_all
+# User.delete_all
+# Talent.delete_all
+# Offer.delete_all
+# Invitation.delete_all
+
+User.destroy_all
+Talent.destroy_all
+Offer.destroy_all
+Invitation.destroy_all
 
 puts 'Creating users...'
 
@@ -122,16 +127,20 @@ puts 'Offers created!'
 puts 'Creating invitations...'
 
 offers.each do |offer|
-  Random.new.rand(0..2).times do
+  Random.new.rand(0..1).times do
     title = Faker::Quote.yoda
     description = Faker::Hacker.say_something_smart
     start_date = Faker::Date.between(Date.today, 1.week.from_now)
     end_date = Faker::Date.between(1.week.from_now, 2.week.from_now)
+    host = users.sample
+    until host != offer.volunteer do
+      host = users.sample
+    end
     invitation_attributes = [
       {
         title: title,
         description: description,
-        host: users.sample,
+        host: host,
         offer: offer,
         start_date: start_date,
         end_date: end_date

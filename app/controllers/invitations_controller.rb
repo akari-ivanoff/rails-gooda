@@ -34,12 +34,13 @@ class InvitationsController < ApplicationController
   #    redirect_to dashboards_index_path
   #  else
   #    render :edit
-  #  end
+  # end
 
     @invitation = Invitation.find(params[:id])
     if @invitation.update_attributes(invitation_params)
       flash[:success] = "Invitation updated"
     end
+    redirect_to dashboards_index_path
   end
 
   def destroy
