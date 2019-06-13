@@ -9,7 +9,8 @@ class OffersController < ApplicationController
   end
 
   def show
-    @invitation = @offer.invitations.build
+    @invitation = Invitation.new
+    @invitation.offer = @offer
   end
 
   def new
