@@ -1,4 +1,5 @@
 class OffersController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   before_action :find_offer, only: [:show, :edit, :update, :destroy]
   before_action :find_volunteer, only: [:new, :create, :update]
   before_action :find_talent, only: [:create, :update]
