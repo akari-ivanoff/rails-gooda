@@ -39,7 +39,6 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.find(params[:id])
     if @invitation.update_attributes(invitation_params)
       flash[:success] = "Invitation updated"
-      redirect_to @invitation
     end
   end
 

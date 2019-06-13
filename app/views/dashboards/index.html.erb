@@ -96,9 +96,7 @@
               <% end %>
             </div>
             <div>
-              <%= link_to dashboards_index_path do %>
-              <p class="btn btn-primary w-100">Close</p>
-              <% end %>
+              <%= button_to "delete", invitation, controller: :invitations, method: :delete, data: { confirm: "You sure?"}, class: "btn btn-flat btn-primary invitation-btn"%>
             </div>
           </div>
         </div>
