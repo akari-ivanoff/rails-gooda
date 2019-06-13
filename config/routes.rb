@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :offers
   resources :invitations
   resources :dashboards, only: [:index]
-
+  resources :users, only: [:show, :edit, :update]
 end
