@@ -28,11 +28,17 @@ class InvitationsController < ApplicationController
   end
 
   def update
-    @invitation.host = current_user
-    if @invitation.update(invitation_params)
-      redirect_to dashboards_index_path
-    else
-      render :edit
+  # commented out the below since not used in app (checked with ctrl shift F)
+  #  @invitation.host = current_user
+  #  if @invitation.update(invitation_params)
+  #    redirect_to dashboards_index_path
+  #  else
+  #    render :edit
+  #  end
+
+    @invitation = Invitation.find(params[:id])
+    if @invitation.update_attributes(invitation_params)
+      flash[:success] = "Invitation updated"
     end
   end
 
