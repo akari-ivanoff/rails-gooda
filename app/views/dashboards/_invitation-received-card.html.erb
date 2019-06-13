@@ -1,0 +1,23 @@
+<div class="card-product">
+  <%= link_to user_path(invitation.host) do %>
+  <%= image_tag invitation.host.photo, alt: "host avatar", class:"volunteer_avatar" %>
+  <% end %>
+  <div class="card-product-infos">
+    <p><strong><%= invitation.host.first_name %></strong> for <strong><%= invitation.offer.talent.title %> </strong></p>
+    <p>
+      <% if invitation.offer.title.length < 100 %>
+        <%= invitation.offer.title %>
+      <% else %>
+        <%= invitation.offer.title[0..100] + "..." %>
+      <% end %>
+    </p>
+  </div>
+  <div class="invitation-date-location">
+    <p><%= invitation.start_date %> - <%= invitation.end_date %> </p>
+    <p> Location </p>
+  </div>
+  <div class="invitation-status">
+    <a class="btn btn-flat btn-primary invitation-btn" href="#">Accept</a>
+    <a class="btn btn-flat btn-primary invitation-btn" href="#">Decline</a>
+  </div>
+</div>

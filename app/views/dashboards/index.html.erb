@@ -21,22 +21,8 @@
           <h3>Offer your help</h3>
           <p><strong>All invitations by hosts asking for help: </strong></p>
 
-          <% @invitations_as_volunteer.each do |invitation| %>
-          <div class="card-product">
-            <%= image_tag invitation.host.photo, alt: "host avatar", class:"volunteer_avatar" %>
-            <div class="card-product-infos">
-              <p><strong><%= invitation.host.first_name %></strong> for <strong><%= invitation.offer.talent.title %> </strong></p>
-              <p> <%= invitation.offer.title %> </p>
-            </div>
-            <div class="invitation-date-location">
-              <p><%= invitation.start_date %> - <%= invitation.end_date %> </p>
-              <p> Location </p>
-            </div>
-            <div class="invitation-status">
-              <a class="btn btn-flat btn-primary invitation-btn" href="#">Accept</a>
-              <a class="btn btn-flat btn-primary invitation-btn" href="#">Decline</a>
-            </div>
-          </div>
+          <% @invitations_as_volunteer.each do |pizza| %>
+            <%= render "invitation-received-card", invitation: pizza %>
           <% end %>
         </div>
       </div>
@@ -46,53 +32,7 @@
         <p><strong>All invitations you sent out and ask others for help: </strong></p>
 
         <% @invitations_as_host.each do |invitation| %>
-        <div class="card-product">
-          <%= image_tag invitation.offer.volunteer.photo, alt: "volunteer avatar", class:"volunteer_avatar" %>
-          <div class="card-product-infos">
-            <p><strong><%= invitation.offer.volunteer.first_name %> </strong> for <strong> <%= invitation.offer.talent.title %> </strong></p>
-            <p> <%= invitation.title %> </p>
-          </div>
-          <div class="invitation-date-location">
-            <p><%= invitation.start_date %> - <%= invitation.end_date %> </p>
-            <p> Location </p>
-          </div>
-          <div class="invitation-status">
-            <div>
-              <%= invitation.status %>
-            </div>
-            <div class="modal fade" id="invitation-<%= invitation.id %>" tabindex="-1" role="dialog" aria-labelledby="addInvitationModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="addInvitationModalLabel">Edit invitation</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <%= simple_form_for [invitation] do |f| %>
-                      <%= f.input :title %>
-                      <%= f.input :description %>
-                      <%= f.input :start_date %>
-                      <%= f.input :end_date %>
-                      <%= f.button :submit, class: "btn btn-primary w-100" %>
-                    </div>
-                <!-- <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div> -->
-                  </div>
-                </div>
-                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#invitation-<%= invitation.id %>"> Edit </button>
-              <% end %>
-            </div>
-            <div>
-              <%= link_to dashboards_index_path do %>
-              <p class="btn btn-primary w-100">Close</p>
-              <% end %>
-            </div>
-          </div>
-        </div>
+          <%= render 'invitation-sent-card', invitation: invitation %>
         <% end %>
       </div>
     </div>
