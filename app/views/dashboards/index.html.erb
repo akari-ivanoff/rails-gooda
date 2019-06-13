@@ -35,14 +35,45 @@
               <div class="invitation-status">
                 <!-- <a class="btn btn-flat btn-primary invitation-btn" href="#">Accept</a> -->
                 <!-- <a class="btn btn-flat btn-primary invitation-btn" href="#">Decline</a> -->
-                <%= form_for(invitation, remote: true, data: { confirm: "You sure?"}) do |fa| %>
-                  <%= fa.hidden_field :status, :value => "accepted" %>
-                  <%= fa.submit "accept ", class: "btn btn-flat btn-primary invitation-btn" %>
-                <% end %>
-                <%= form_for(invitation, remote: true, data: { confirm: "You sure?" }) do |fr| %>
+
+                <% if invitation.status == "pending" %>
+
+                    <%= form_for(invitation, remote: true, data: { confirm: "You sure?"}) do |fa| %>
+                    <%= fa.hidden_field :status, :value => "accepted" %>
+                    <%= fa.submit "accept ", class: "btn btn-flat btn-primary invitation-btn" %>
+                    <% end %>
+
+                    <%= form_for(invitation, remote: true, data: { confirm: "You sure?" }) do |fr| %>
+                    <%= fr.hidden_field :status, :value => "declined" %>
+                    <%= fr.submit "decline", class: "btn btn-flat btn-primary invitation-btn" %>
+                    <% end %>
+
+
+                <% elsif invitation.status == "accepted" %>
+
+                  <button class: 'btn btn-flat btn-primary invitation-btn'>accepted!</button>
+
+                  <%= form_for(invitation, remote: true, data: { confirm: "You sure?" }) do |fr| %>
                   <%= fr.hidden_field :status, :value => "declined" %>
                   <%= fr.submit "decline", class: "btn btn-flat btn-primary invitation-btn" %>
+                  <% end %>
+
+                <% elsif invitation.status == "declined" %>
+                  <%= form_for(invitation, remote: true, data: { confirm: "You sure?"}) do |fa| %>
+                  <%= fa.hidden_field :status, :value => "accepted" %>
+                  <%= fa.submit "accept ", class: "btn btn-flat btn-primary invitation-btn" %>
+                  <% end %>
+
+                  <button class: 'btn btn-flat btn-primary invitation-btn'>declined!</button>
+
+
+
                 <% end %>
+
+
+
+
+
               </div>
 
           </div>
